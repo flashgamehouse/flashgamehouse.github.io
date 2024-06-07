@@ -5050,48 +5050,7 @@
                 return this.shadow.activeElement === this.virtualKeyboard
             }
             contextMenuItems() {
-                const e = String.fromCharCode(10003),
-                    n = [],
-                    t = () => {
-                        n.length > 0 && null !== n[n.length - 1] && n.push(null)
-                    };
-                if (this.instance && this.isPlaying) {
-                   
-                }
-                this.fullscreenEnabled && (this.isFullscreen ? n.push({
-                    text: ve("context-menu-exit-fullscreen"),
-                    onClick: () => this.setFullscreen(!1)
-                }) : n.push({
-                    text: ve("context-menu-enter-fullscreen"),
-                    onClick: () => this.setFullscreen(!0)
-                })), n.push({
-                    text: ve("context-menu-volume-controls"),
-                    onClick: () => {
-                        this.openVolumeControls()
-                    }
-                }), this.instance && this.swfUrl && this.loadedConfig && !0 === this.loadedConfig.showSwfDownload && (t(), n.push({
-                    text: ve("context-menu-download-swf"),
-                    onClick: this.downloadSwf.bind(this)
-                })), navigator.clipboard && window.isSecureContext && n.push({
-                    text: ve("context-menu-copy-debug-info"),
-                    onClick: () => navigator.clipboard.writeText(this.getPanicData())
-                }), this.populateSaves();
-                const r = this.saveManager.querySelector("#local-saves");
-                return r && "" !== r.textContent && n.push({
-                    text: ve("context-menu-open-save-manager"),
-                    onClick: this.openSaveManager.bind(this)
-                }), t(), n.push({
-                    text: ve("context-menu-about-ruffle", {
-                        flavor: d ? "extension" : "",
-                        version: Vn.versionName
-                    }),
-                    onClick() {
-                        window.open(Yn, "_blank")
-                    }
-                }), this.isTouch && (t(), n.push({
-                    text: ve("context-menu-hide"),
-                    onClick: () => this.contextMenuForceDisabled = !0
-                })), n
+              
             }
             pointerDown(e) {
                 this.pointerDownPosition = new rt(e.pageX, e.pageY), this.pointerMoveMaxDistance = 0, this.startLongPressTimer()
@@ -5113,35 +5072,7 @@
                 this.longPressTimer ? this.clearLongPressTimer() : !this.contextMenuSupported && "mouse" !== e.pointerType && this.pointerMoveMaxDistance < 15 && this.showContextMenu(e)
             }
             showContextMenu(e) {
-                var n, t, r;
-                const a = Array.from(this.shadow.querySelectorAll(".modal")).some((e => !e.classList.contains("hidden")));
-                if (this.panicked || a) return;
-                if (e.preventDefault(), "contextmenu" === e.type ? (this.contextMenuSupported = !0, document.documentElement.addEventListener("click", this.hideContextMenu.bind(this), {
-                        once: !0
-                    })) : (document.documentElement.addEventListener("pointerup", this.hideContextMenu.bind(this), {
-                        once: !0
-                    }), e.stopPropagation()), [!1, Wn.Off].includes(null !== (t = null === (n = this.loadedConfig) || void 0 === n ? void 0 : n.contextMenu) && void 0 !== t ? t : Wn.On) || this.isTouch && (null === (r = this.loadedConfig) || void 0 === r ? void 0 : r.contextMenu) === Wn.RightClickOnly || this.contextMenuForceDisabled) return;
-                for (; this.contextMenuElement.firstChild;) this.contextMenuElement.removeChild(this.contextMenuElement.firstChild);
-                for (const e of this.contextMenuItems())
-                    if (null === e) {
-                        const e = document.createElement("li");
-                        e.className = "menu-separator";
-                        const n = document.createElement("hr");
-                        e.appendChild(n), this.contextMenuElement.appendChild(e)
-                    } else {
-                        const {
-                            text: n,
-                            onClick: t,
-                            enabled: r
-                        } = e, a = document.createElement("li");
-                        a.className = "menu-item", a.textContent = n, this.contextMenuElement.appendChild(a), !1 !== r ? a.addEventListener(this.contextMenuSupported ? "click" : "pointerup", t) : a.classList.add("disabled")
-                    } this.contextMenuElement.style.left = "0", this.contextMenuElement.style.top = "0", this.contextMenuOverlay.classList.remove("hidden");
-                const i = this.getBoundingClientRect(),
-                    o = e.clientX - i.x,
-                    s = e.clientY - i.y,
-                    l = i.width - this.contextMenuElement.clientWidth - 1,
-                    u = i.height - this.contextMenuElement.clientHeight - 1;
-                this.contextMenuElement.style.left = Math.floor(Math.min(o, l)) + "px", this.contextMenuElement.style.top = Math.floor(Math.min(s, u)) + "px"
+               
             }
             hideContextMenu() {
                 var e;
