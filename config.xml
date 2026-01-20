@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configs>
+	<config id="server_url">
+		<type>real</type> 
+		<url></url> 
+	</config>	
+	<config id="regist_url">
+		<type>real</type> 
+		<url>https://pororo.jr.naver.com/billing/index.nhn</url> 
+	</config>
+</configs>
